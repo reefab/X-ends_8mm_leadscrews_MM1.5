@@ -16,6 +16,8 @@ m3_screw_head_height = 3;
 m3_nut_wrench_size = 5.5;
 m3_nut_height = 2.4;
 
+m4_screw_dia = 4;
+
 m8_screw_dia = 8;
 m8_washer_dia = 16;
 m8_washer_height = 1.5;
@@ -33,9 +35,12 @@ idler_y_offset = rod_dist/2+rod_dia/2+belt_rod_dist - 2*m8_washer_height;
 // belt range = rod_dist/2+rod_dia/2+belt_rod_dist - nema17 shaft socket = 36.5 - 43 = 6.5mm
 
 leadscrew_dia = 8;
-leadscrew_nut_wrench_size = 17+0.2;		// plus some extra clearance
-leadscrew_nut_height = 15;
-anti_backlash_spring_space = 20;
+/*leadscrew_nut_wrench_size = 17+0.2;		// plus some extra clearance*/
+/*anti_backlash_spring_space = 20;*/
+leadscrew_nut_height = 10;
+leadscrew_nut_inner_diameter = 10.2;
+leadscrew_nut_outter_diameter = 22;
+leadscrew_nut_hole_from_center = 16;
 
 nema17_width = 43;
 nema17_hole_dist = 31;
@@ -141,11 +146,6 @@ module leadscrew_nuttrap(){
 		}
 }
 
-module leadscrew_nuttrap_spacer(){
-	translate([zrod_leadscrew_dist/2,0,leadscrew_nuttrap_height/2])
-	rotate([0,0,30])
-		nut_trap(leadscrew_nut_wrench_size+2*wall,leadscrew_nuttrap_height+2);
-}
 
 
 
@@ -304,7 +304,7 @@ module idler_mount(){
 		// idler bolt hole
 		translate([xend_body_x_offset,-idler_y_offset+2.5,idler_elevation])
 		rotate([0,0,90])
-			teardrop(m8_screw_dia/2+clearance,7);
+			teardrop(m4_screw_dia/2+clearance,7);
 
 	}
 
@@ -328,6 +328,13 @@ module idler_mount(){
 }
 
 
+module leadscrew_nut_holes(){
+	translate([zrod_leadscrew_dist/2,0,leadscrew_nuttrap_height/2]) {
+            cylinder(h=100, d=leadscrew_nut_inner_diameter + clearance);
+            for(i=[-1,1])
+                 translate([0, i*leadscrew_nut_hole_from_center, 0]) cylinder(h=xend_body_height * 2, d=m4_screw_dia);
+        }
+}
 
 module assembly(idler=false){
 
@@ -354,7 +361,8 @@ module assembly(idler=false){
 			}
 		}
 		bearing_holder_spacer();
-		/*leadscrew_nuttrap_spacer();*/
+		leadscrew_nut_holes();
+
 
 		if(idler==false){
 			// nema17 screw head/ screw driver clearance
