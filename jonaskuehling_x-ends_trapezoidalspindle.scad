@@ -22,7 +22,7 @@ m8_screw_dia = 8;
 m8_washer_dia = 16;
 m8_washer_height = 1.5;
 
-idler_dia = 25;		// when using pure 608 bearing without belt guide: 22mm
+idler_dia = 13;		// when using pure 608 bearing without belt guide: 22mm
 
 belt_rod_dist = 7.5;		// in y direction
 belt_elevation = 6.5;		// in z direction, space between rod top and belt bottom;
