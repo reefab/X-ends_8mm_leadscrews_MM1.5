@@ -261,7 +261,7 @@ module idler_mount(){
 					translate([0,idler_elevation-xend_body_length/2])
 						linear_extrude(height=5,center=true) polygon(points=[[-xend_body_length/2+xend_body_x_offset,m8_washer_dia/2/sin(45)],
 															[-xend_body_length/2+xend_body_x_offset,0],
-															[-xend_body_length/2+xend_body_x_offset+m8_washer_dia/2/sin(45),0],
+															[xend_body_x_offset+m8_washer_dia/2/sin(45) + 9 ,0],
 															[xend_body_length/2+xend_body_x_offset,xend_body_length-m8_washer_dia/2/sin(45)],
 															[xend_body_length/2+xend_body_x_offset,xend_body_length],
 															[xend_body_length/2+xend_body_x_offset-m8_washer_dia/2/sin(45),xend_body_length]]);
