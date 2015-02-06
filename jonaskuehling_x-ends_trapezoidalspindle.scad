@@ -40,7 +40,7 @@ leadscrew_dia = 8;
 leadscrew_nut_height = 10;
 leadscrew_nut_inner_diameter = 10.2;
 leadscrew_nut_outter_diameter = 22;
-leadscrew_nut_hole_from_center = 16;
+leadscrew_nut_hole_from_center = 8;
 
 nema17_width = 43;
 nema17_hole_dist = 31;
@@ -333,7 +333,7 @@ module leadscrew_nut_holes(){
 	translate([zrod_leadscrew_dist/2,0,leadscrew_nuttrap_height/2]) {
             cylinder(h=100, d=leadscrew_nut_inner_diameter + clearance);
             for(i=[-1,1])
-                 translate([0, i*leadscrew_nut_hole_from_center, 0]) cylinder(h=xend_body_height * 2, d=m4_screw_dia);
+                 translate([0, i*leadscrew_nut_hole_from_center, 0]) cylinder(h=xend_body_height * 2, d=m3_screw_dia + clearance);
         }
 }
 
