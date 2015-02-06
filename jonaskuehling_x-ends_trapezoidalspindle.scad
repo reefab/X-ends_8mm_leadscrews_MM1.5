@@ -46,7 +46,7 @@ nema17_width = 43;
 nema17_hole_dist = 31;
 nema17_center_dia = 25;
 
-layer_height = 0.25;
+layer_height = 0.2;
 
 xend_body_x_offset = 3;
 motor_mount_x_offset = -2;
@@ -62,7 +62,7 @@ idler_elevation = xend_body_height/2+rod_dia/2+belt_elevation+belt_height+idler_
 
 // RENDER
 // "idler=false" for motor-x-end, "idler=true" for idler-x-end
-idler=false;
+idler=true;
 
 assembly(idler);
 
@@ -261,17 +261,17 @@ module idler_mount(){
 						cylinder(r=m8_washer_dia/2, h=5,center=true);
 					translate([0,idler_elevation-xend_body_length/2])
 						linear_extrude(height=5,center=true) polygon(points=[[-xend_body_length/2+xend_body_x_offset,m8_washer_dia/2/sin(45)],
-															[-xend_body_length/2+xend_body_x_offset,0],
-															[xend_body_x_offset+m8_washer_dia/2/sin(45) + 9 ,0],
-															[xend_body_length/2+xend_body_x_offset,xend_body_length-m8_washer_dia/2/sin(45)],
-															[xend_body_length/2+xend_body_x_offset,xend_body_length],
-															[xend_body_length/2+xend_body_x_offset-m8_washer_dia/2/sin(45),xend_body_length]]);
-				}
+                                                        [-xend_body_length/2+xend_body_x_offset,0],
+                                                        [-xend_body_length/2+xend_body_x_offset+m8_washer_dia/2/sin(45),0],
+                                                        [xend_body_length/2+xend_body_x_offset,xend_body_length-m8_washer_dia/2/sin(45)],
+                                                        [xend_body_length/2+xend_body_x_offset,xend_body_length],
+                                                        [xend_body_length/2+xend_body_x_offset-m8_washer_dia/2/sin(45),xend_body_length]]);
+            }
 
-			// idler mount support top
-			difference(){
-				translate([xend_body_length/2+xend_body_x_offset-(m8_washer_dia/2/sin(45))/2,-idler_y_offset/2,xend_body_height/2+xend_body_length/2])
-					 cube([m8_washer_dia/2/sin(45),idler_y_offset,xend_body_height*2 + 10],center=true);
+        // idler mount support top
+        difference(){
+                translate([xend_body_length/2+xend_body_x_offset-(m8_washer_dia/2/sin(45))/2,-idler_y_offset/2,xend_body_height/2+xend_body_length])
+					cube([m8_washer_dia/2/sin(45),idler_y_offset,m8_washer_dia/2/sin(45)],center=true);
 				translate([xend_body_x_offset*2,0,0])
 					mirror([1,0,0]){
 						translate([-(body_width+1)/2-zrod_leadscrew_dist/2,0,body_length/2])
