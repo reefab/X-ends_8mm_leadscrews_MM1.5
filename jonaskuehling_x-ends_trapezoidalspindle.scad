@@ -255,12 +255,12 @@ module idler_mount(){
 	mirror([1,0,0])
 	difference(){
 		union(){
-			translate([0,-idler_y_offset+2.5,0])
+			 translate([0,-idler_y_offset+6.5,0])
 				rotate([90,0,0]){
 					translate([xend_body_x_offset,idler_elevation,0])
 						cylinder(r=m8_washer_dia/2, h=5,center=true);
 					translate([0,idler_elevation-xend_body_length/2])
-						linear_extrude(height=5,center=true) polygon(points=[[-xend_body_length/2+xend_body_x_offset,m8_washer_dia/2/sin(45)],
+						linear_extrude(height=13,center=true) polygon(points=[[-xend_body_length/2+xend_body_x_offset,m8_washer_dia/2/sin(45)],
                                                         [-xend_body_length/2+xend_body_x_offset,0],
                                                         [-xend_body_length/2+xend_body_x_offset+m8_washer_dia/2/sin(45),0],
                                                         [xend_body_length/2+xend_body_x_offset,xend_body_length-m8_washer_dia/2/sin(45)],
@@ -303,9 +303,9 @@ module idler_mount(){
 			roundcorner_tear(xend_body_height/2,xend_body_length);
 
 		// idler bolt hole
-		translate([xend_body_x_offset,-idler_y_offset+2.5,idler_elevation])
+		translate([xend_body_x_offset,-idler_y_offset+6,idler_elevation])
 		rotate([0,0,90])
-			teardrop(m4_screw_dia/2+clearance,7);
+			# teardrop(m4_screw_dia/2+clearance,15);
 
 	}
 
