@@ -270,8 +270,8 @@ module idler_mount(){
 
         // idler mount support top
         difference(){
-                translate([xend_body_length/2+xend_body_x_offset-(m8_washer_dia/2/sin(45))/2,-idler_y_offset/2,xend_body_height/2+xend_body_length])
-					cube([m8_washer_dia/2/sin(45),idler_y_offset,m8_washer_dia/2/sin(45)],center=true);
+                translate([xend_body_length/2+xend_body_x_offset-(m8_washer_dia/2/sin(45))/2,-idler_y_offset/2, xend_body_height/2+xend_body_length - 6])
+					 cube([m8_washer_dia/2/sin(45),idler_y_offset,m8_washer_dia/2/sin(45)],center=true);
 				translate([xend_body_x_offset*2,0,0])
 					mirror([1,0,0]){
 						translate([-(body_width+1)/2-zrod_leadscrew_dist/2,0,body_length/2])
@@ -305,7 +305,7 @@ module idler_mount(){
 		// idler bolt hole
 		translate([xend_body_x_offset,-idler_y_offset+6,idler_elevation])
 		rotate([0,0,90])
-			# teardrop(m4_screw_dia/2+clearance,15);
+			 teardrop(m4_screw_dia/2+clearance,15);
 
 	}
 
