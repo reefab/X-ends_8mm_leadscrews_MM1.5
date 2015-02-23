@@ -220,11 +220,11 @@ module motor_mount(){
 					translate([-zrod_leadscrew_dist/2,0,0])
 						cylinder(r=body_width/2+1.5+wall, h=nema17_hole_dist+(m3_screw_head_dia+2*clearance)/2+xend_body_height+m3_screw_dia/2+clearance+5);
 				}
-				translate([-(body_width+1)/2-zrod_leadscrew_dist/2,0,body_length/2])
-					cube([body_width+1,body_width+3,body_length+2], center = true);
+				/*# translate([-(body_width+1)/2-zrod_leadscrew_dist/2,0,body_length/2])*/
+				/*	cube([body_width+1,body_width+3,body_length+2], center = true);*/
 				translate([-zrod_leadscrew_dist/2,0,-1])
-					cylinder(r=body_width/2+1.5, h=body_length+2);
-				translate([-body_width-xend_body_length/2+xend_body_x_offset,0,body_length/2])
+					cylinder(r=body_width/2, h=body_length+2);
+				 translate([-body_width-xend_body_length/2+xend_body_x_offset,0,body_length/2])
 					cube([2*body_width,body_width+3+2*wall+2,body_length+2], center = true);
 				translate([xend_body_x_offset,-xend_body_width/4-wall/2,body_length/2])
 					cube([xend_body_length+2,xend_body_width/2,body_length+2], center = true);
