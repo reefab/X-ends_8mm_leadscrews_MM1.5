@@ -62,7 +62,7 @@ idler_elevation = xend_body_height/2+rod_dia/2+belt_elevation+belt_height+idler_
 
 // RENDER
 // "idler=false" for motor-x-end, "idler=true" for idler-x-end
-idler=true;
+idler=false;
 
 assembly(idler);
 
@@ -119,8 +119,8 @@ module bearing_holder(){
 
 module bearing_holder_spacer(){
 	render()
-	translate([-body_width/2-zrod_leadscrew_dist/2,0,body_length/2])
-		 cube([body_width,body_width+3,body_length+2], center = true);
+	/*translate([-body_width/2-zrod_leadscrew_dist/2 - 5,0,body_length/2])*/
+	/*	 # cube([body_width,body_width+3,body_length+2], center = true);*/
 	difference(){
 		translate([-zrod_leadscrew_dist/2,0,-1])
 			 cylinder(r=body_width/2, h=body_length+2);
@@ -272,12 +272,10 @@ module idler_mount(){
         difference(){
                 translate([xend_body_length/2+xend_body_x_offset-(m8_washer_dia/2/sin(45))/2,-idler_y_offset/2, xend_body_height/2+xend_body_length - 6])
 					 cube([m8_washer_dia/2/sin(45),idler_y_offset,m8_washer_dia/2/sin(45)],center=true);
-				translate([xend_body_x_offset*2,0,0])
+				 translate([xend_body_x_offset*2,0,0])
 					mirror([1,0,0]){
-						translate([-(body_width+1)/2-zrod_leadscrew_dist/2,0,body_length/2])
-							cube([body_width+1,body_width+3,body_length+2], center = true);
 						translate([-zrod_leadscrew_dist/2,0,-1])
-							cylinder(r=body_width/2+1.5, h=body_length+2);
+							cylinder(r=body_width/2, h=body_length+2);
 					}
 			}
 
@@ -312,15 +310,15 @@ module idler_mount(){
 	mirror([0,1,0])
 	difference(){
 		union(){
-			translate([-body_width/2-zrod_leadscrew_dist/2,0,(xend_body_length/2+idler_elevation)/2])
-				cube([body_width,body_width+3+2*wall,xend_body_length/2+idler_elevation], center=true);
+			/*translate([-body_width/2-zrod_leadscrew_dist/2,0,(xend_body_length/2+idler_elevation)/2])*/
+			/*	# cube([body_width,body_width+3+2*wall,xend_body_length/2+idler_elevation], center=true);*/
 			translate([-zrod_leadscrew_dist/2,0,0])
-				cylinder(r=body_width/2+1.5+wall, h=xend_body_length/2+idler_elevation);
+				 cylinder(r=body_width/2+1.5+wall, h=xend_body_length/2+idler_elevation);
 		}
-		translate([-(body_width+1)/2-zrod_leadscrew_dist/2,0,body_length/2])
-			cube([body_width+1,body_width+3,body_length+2], center = true);
+		/*translate([-(body_width+1)/2-zrod_leadscrew_dist/2,0,body_length/2])*/
+		/*	 cube([body_width+1,body_width+3,body_length+2], center = true);*/
 		translate([-zrod_leadscrew_dist/2,0,-1])
-			cylinder(r=body_width/2+1.5, h=body_length+2);
+			cylinder(r=body_width/2, h=body_length+2);
 		translate([-body_width-xend_body_length/2+xend_body_x_offset,0,body_length/2])
 			cube([2*body_width,body_width+3+2*wall+2,body_length+2], center = true);
 		translate([xend_body_x_offset,-xend_body_width/4-wall/2,body_length/2])
