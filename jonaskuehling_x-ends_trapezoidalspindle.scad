@@ -62,7 +62,7 @@ idler_elevation = xend_body_height/2+rod_dia/2+belt_elevation+belt_height+idler_
 
 // RENDER
 // "idler=false" for motor-x-end, "idler=true" for idler-x-end
-idler=false;
+idler=true;
 
 assembly(idler);
 
@@ -328,11 +328,21 @@ module idler_mount(){
 
 
 module leadscrew_nut_holes(){
-	translate([zrod_leadscrew_dist/2,0,leadscrew_nuttrap_height/2]) {
-            cylinder(h=100, d=leadscrew_nut_inner_diameter + clearance);
-            for(i=[-1,1])
-                 translate([0, i*leadscrew_nut_hole_from_center, 0]) cylinder(h=xend_body_height * 2, d=m3_screw_dia + clearance);
+    union() {
+    for(j=[-1,1]) {
+        translate([zrod_leadscrew_dist/2 + j,0,leadscrew_nuttrap_height/2]) {
+                cylinder(h=xend_body_height * 2, d=leadscrew_nut_inner_diameter + clearance * 2, $fn=50);
+                for(i=[-1,1])
+                     translate([0, i*leadscrew_nut_hole_from_center, 0]) cylinder(h=xend_body_height * 2, d=m3_screw_dia + clearance * 2, $fn=20);
+            }
         }
+     translate([zrod_leadscrew_dist/2,0,0]) {
+            cube([2, leadscrew_nut_inner_diameter + clearance * 2, xend_body_height * 3], center=true);
+            for(i=[-1,1]) {
+                 translate([0, i*leadscrew_nut_hole_from_center, 0]) cube([2,m3_screw_dia + clearance * 2, xend_body_height* 3], center=true);
+            }
+        }
+    }
 }
 
 module assembly(idler=false){
