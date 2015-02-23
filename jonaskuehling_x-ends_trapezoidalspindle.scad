@@ -120,12 +120,12 @@ module bearing_holder(){
 module bearing_holder_spacer(){
 	render()
 	translate([-body_width/2-zrod_leadscrew_dist/2,0,body_length/2])
-		cube([body_width,body_width+3,body_length+2], center = true);
+		 cube([body_width,body_width+3,body_length+2], center = true);
 	difference(){
 		translate([-zrod_leadscrew_dist/2,0,-1])
-			cylinder(r=body_width/2+1.5, h=body_length+2);
+			 cylinder(r=body_width/2, h=body_length+2);
 		translate([body_width/2-zrod_leadscrew_dist/2+body_width/2-0.5,0,body_length/2])
-			cube([body_width,body_width+3,body_length+2], center = true);
+			 cube([body_width,body_width+3,body_length+2], center = true);
 	}
 }
 
@@ -262,7 +262,7 @@ module idler_mount(){
 					translate([0,idler_elevation-xend_body_length/2])
 						linear_extrude(height=13,center=true) polygon(points=[[-xend_body_length/2+xend_body_x_offset,m8_washer_dia/2/sin(45)],
                                                         [-xend_body_length/2+xend_body_x_offset,0],
-                                                        [-xend_body_length/2+xend_body_x_offset+m8_washer_dia/2/sin(45),0],
+                                                        [-xend_body_length/2+xend_body_x_offset+m8_washer_dia/2/sin(45) + 10,0],
                                                         [xend_body_length/2+xend_body_x_offset,xend_body_length-m8_washer_dia/2/sin(45)],
                                                         [xend_body_length/2+xend_body_x_offset,xend_body_length],
                                                         [xend_body_length/2+xend_body_x_offset-m8_washer_dia/2/sin(45),xend_body_length]]);
@@ -304,8 +304,8 @@ module idler_mount(){
 
 		// idler bolt hole
 		translate([xend_body_x_offset,-idler_y_offset+6,idler_elevation])
-		rotate([0,0,90])
-			 teardrop(m4_screw_dia/2+clearance,15);
+		rotate([0,90,90])
+			 cylinder(r=m4_screw_dia/2+clearance, h=15, center=true);
 
 	}
 
@@ -351,7 +351,7 @@ module assembly(idler=false){
 
 				// bearing holder support
 				translate([(body_width/2+1.5+wall/2)/2-zrod_leadscrew_dist/2,0,(nema17_hole_dist+(m3_screw_head_dia+2*clearance)/2+xend_body_height+m3_screw_dia/2+clearance+5)/2])
-					cube([body_width/2+1.5+wall/2,wall,nema17_hole_dist+(m3_screw_head_dia+2*clearance)/2+xend_body_height+m3_screw_dia/2+clearance+5],center=true);
+					 cube([body_width/2+1.5+wall/2,wall,nema17_hole_dist+(m3_screw_head_dia+2*clearance)/2+xend_body_height+m3_screw_dia/2+clearance+5],center=true);
 			}
 			else{
 				idler_mount();
@@ -383,6 +383,5 @@ module assembly(idler=false){
 			}
 		}
 	}
-	bearing_holder();
-	/*# leadscrew_nuttrap();*/
+	# bearing_holder();
 }
