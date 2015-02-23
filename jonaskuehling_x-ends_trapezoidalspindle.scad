@@ -280,8 +280,8 @@ module idler_mount(){
 			}
 
 			// idler mount support bottom
-			translate([-xend_body_length/2+xend_body_x_offset,-idler_y_offset,0])
-				cube([m8_washer_dia/2/sin(45),idler_y_offset,idler_elevation-xend_body_length/2+m8_washer_dia/2/sin(45)]);
+			 translate([-xend_body_length/2+xend_body_x_offset,-idler_y_offset,0])
+				cube([m8_washer_dia/2/sin(45), idler_y_offset/1.5, idler_elevation-xend_body_length/2+m8_washer_dia/2/sin(45)]);
 		}
 
 		// rod clamp freedom
