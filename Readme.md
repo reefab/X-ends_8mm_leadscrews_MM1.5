@@ -1,3 +1,5 @@
+[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
+
 # X-ends for MendelMax 1.5 for 8mm leadscrews and 8mm rods with wobble isolator
 
 ![photo](photo.jpg)
